@@ -7,6 +7,7 @@ class DataTest extends FlatSpec with SparkEnvironment with BeforeAndAfter {
 
   // Shared dataframe across all test cases
   // We cache it to make access faster
+  System.setSecurityManager(null)
   private val scoreCardFile = getClass.getResource("/MERGED2015_16_PP.csv.gz").getFile
   private val scoreCardDF: DataFrame = CollegeScorecard.loadScorecardData(
     TestHive.sparkSession,
